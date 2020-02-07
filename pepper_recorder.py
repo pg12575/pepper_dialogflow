@@ -49,8 +49,10 @@ class SoundProcessingModule(ALModule):
         sound_data_interlaced = np.fromstring(str(inputBuffer), dtype=np.int16)
         sound_data = np.reshape(sound_data_interlaced, (nbOfChannels, nbOfSamplesByChannel), 'F')
         peak_value = np.max(sound_data)
+
+
         # detect sound
-        if peak_value > 9000:
+        if peak_value > 5000:
             #print("Peak:", peak_value)
             #time.sleep(0.5)
             self.count = LISTEN_RETRIES
