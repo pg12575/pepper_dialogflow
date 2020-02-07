@@ -10,3 +10,7 @@ For this code to run, there needs to be two python virtual environments:
 There also needs to be a credentials.json file in the root folder. See here - https://dialogflow.com/docs/reference/v2-auth-setup
 
 There are currently four scripts, only main.py needs to be run using python2.7.
+
+## Acknowledgements
+
+A lot of the code is borrowed from https://medium.com/@pwc.emtech.eu/pepper-integration-with-dialogflow-1d7f1582da1a. However, Dialogflow and Pepper's Python SDK have been separated into Python3 and Python2.7 scripts, due to Dialogflow no longer supporting Python2.7.

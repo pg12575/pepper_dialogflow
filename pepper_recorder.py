@@ -10,8 +10,8 @@ import wave
 import pyaudio
 from subprocess import call
 
-LISTEN_RETRIES = 20
-DIALOG_FLOW_GCP_PROJECT_ID = "jokes-fvvqts"
+LISTEN_RETRIES = 20 # How long to wait after silence before stopping audio recording. Smaller value breaks audio into smaller recordings.
+DIALOG_FLOW_GCP_PROJECT_ID = "jokes-fvvqts" # Your dialogflow Project ID
 
 class SoundProcessingModule(ALModule):
     def __init__( self, name, ip, stop_recognition):
@@ -50,7 +50,7 @@ class SoundProcessingModule(ALModule):
         sound_data = np.reshape(sound_data_interlaced, (nbOfChannels, nbOfSamplesByChannel), 'F')
         peak_value = np.max(sound_data)
         # detect sound
-        if peak_value > 10000:
+        if peak_value > 9000:
             #print("Peak:", peak_value)
             #time.sleep(0.5)
             self.count = LISTEN_RETRIES
@@ -89,7 +89,7 @@ class SoundProcessingModule(ALModule):
         self.outfile.seek(0)
         #print(self.outfile)
         frames = []
-        CHUNK = 20000
+        CHUNK = 4096
 
 
         try:
